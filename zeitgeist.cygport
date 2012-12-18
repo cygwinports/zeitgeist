@@ -1,0 +1,25 @@
+inherit gnome2 python
+
+NAME="zeitgeist"
+VERSION=0.9.5
+RELEASE=1
+CATEGORY="GNOME"
+SUMMARY="Zeitgeist daemon"
+DESCRIPTION="Zeitgeist is a service which logs the users' activities and
+events, anywhere from files opened to websites visited and conversations had.
+It makes this information readily available for other applications to use. It
+is able to establish relationships between items based on similarity and usage
+patterns."
+HOMEPAGE="http://zeitgeist-project.com/"
+SRC_URI="http://launchpad.net/${NAME}/${PV[1]}.${PV[2]}/${PV}/+download/${NAME}-${VERSION}.tar.bz2"
+PATCH_URI="0.9.5-gmodule-suffix.patch"
+
+PKG_NAMES="zeitgeist python-zeitgeist"
+zeitgeist_REQUIRES="zeitgeist-datahub"
+zeitgeist_CONTENTS="usr/bin/ usr/lib/${NAME}/ usr/share/"
+python_zeitgeist_SUMMARY="Python Zeitgeist client library"
+python_zeitgeist_REQUIRES=${NAME}
+python_zeitgeist_CONTENTS=${PYTHON_SITELIB#/}
+
+CYGCONF_ARGS="--libexecdir=/usr/lib/${NAME}"
+MAKEOPTS+=" zeitgeistdocdir= "

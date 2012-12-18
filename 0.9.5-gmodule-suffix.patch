@@ -1,0 +1,11 @@
+--- origsrc/zeitgeist-0.9.5/src/extension-collection.vala	2012-08-25 19:20:05.000000000 -0500
++++ src/zeitgeist-0.9.5/src/extension-collection.vala	2012-12-18 03:40:15.037621300 -0600
+@@ -88,7 +88,7 @@ namespace Zeitgeist
+                 unowned string? file_name = user_ext_dir.read_name ();
+                 while (file_name != null)
+                 {
+-                    if (file_name.has_suffix (".so"))
++                    if (file_name.has_suffix ("." + GLib.Module.SUFFIX))
+                     {
+                         string path = Path.build_filename (ext_dir1, file_name);
+                         debug ("Loading extension: \"%s\"", path);
