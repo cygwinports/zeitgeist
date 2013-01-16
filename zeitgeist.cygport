@@ -2,7 +2,7 @@ inherit gnome2 python
 
 NAME="zeitgeist"
 VERSION=0.9.5
-RELEASE=1
+RELEASE=2
 CATEGORY="GNOME"
 SUMMARY="Zeitgeist daemon"
 DESCRIPTION="Zeitgeist is a service which logs the users' activities and
