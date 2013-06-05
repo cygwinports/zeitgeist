@@ -18,7 +18,6 @@ PKG_NAMES="zeitgeist python-zeitgeist"
 zeitgeist_REQUIRES="zeitgeist-datahub"
 zeitgeist_CONTENTS="usr/bin/ usr/lib/${NAME}/ usr/share/"
 python_zeitgeist_SUMMARY="Python Zeitgeist client library"
-python_zeitgeist_REQUIRES=${NAME}
 python_zeitgeist_CONTENTS=${PYTHON_SITELIB#/}
 
 CYGCONF_ARGS="--libexecdir=/usr/lib/${NAME}"
