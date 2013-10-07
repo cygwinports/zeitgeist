@@ -1,9 +1,9 @@
 inherit gnome2 python
 
 NAME="zeitgeist"
-VERSION=0.9.5
-RELEASE=2
-CATEGORY="GNOME"
+VERSION=0.9.14
+RELEASE=1
+CATEGORY="X11"
 SUMMARY="Zeitgeist daemon"
 DESCRIPTION="Zeitgeist is a service which logs the users' activities and
 events, anywhere from files opened to websites visited and conversations had.
@@ -11,13 +11,24 @@ It makes this information readily available for other applications to use. It
 is able to establish relationships between items based on similarity and usage
 patterns."
 HOMEPAGE="http://zeitgeist-project.com/"
-SRC_URI="http://launchpad.net/${NAME}/${PV[1]}.${PV[2]}/${PV}/+download/${NAME}-${VERSION}.tar.bz2"
-PATCH_URI="0.9.5-gmodule-suffix.patch"
+SRC_URI="http://launchpad.net/zeitgeist/${VERSION%.*}/${VERSION}/+download/${NAME}-${VERSION}.tar.xz"
+PATCH_URI="
+	0.9.5-gmodule-suffix.patch
+	0.9.14-no-undefined.patch
+"
 
-PKG_NAMES="zeitgeist python-zeitgeist"
-zeitgeist_REQUIRES="zeitgeist-datahub"
-zeitgeist_CONTENTS="usr/bin/ usr/libexec/ usr/share/"
+PKG_NAMES="zeitgeist libzeitgeist2.0_0 libzeitgeist2.0-devel girepository-Zeitgeist2.0 python-zeitgeist vala-zeitgeist2.0"
+zeitgeist_OBSOLETES="zeitgeist-datahub"
+zeitgeist_CONTENTS="etc/ usr/bin/*.exe usr/share/dbus-1/ usr/share/doc/ usr/share/man/ usr/share/${NAME}/"
+libzeitgeist2_0_0_CATEGORY="Libs"
+libzeitgeist2_0_0_CONTENTS="usr/bin/cygzeitgeist-2.0-0.dll"
+libzeitgeist2_0_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+girepository_Zeitgeist2_0_CATEGORY="Libs"
+girepository_Zeitgeist2_0_CONTENTS="usr/*/gir*/Zeitgeist-2.0.*"
+python_zeitgeist_CATEGORY="Python"
 python_zeitgeist_SUMMARY="Python Zeitgeist client library"
 python_zeitgeist_CONTENTS=${PYTHON_SITELIB#/}
+vala_zeitgeist2_0_CATEGORY="Libs"
+vala_zeitgeist2_0_CONTENTS="usr/share/vala/vapi/zeitgeist*-2.0.*"
 
-MAKEOPTS+=" zeitgeistdocdir= "
+MAKEOPTS+=" bashcompletiondir=/etc/bash_completion.d zeitgeistdocdir= "
