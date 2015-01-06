@@ -2,7 +2,7 @@ inherit gnome2 python
 
 NAME="zeitgeist"
 VERSION=0.9.14
-RELEASE=1
+RELEASE=2
 CATEGORY="X11"
 SUMMARY="Zeitgeist daemon"
 DESCRIPTION="Zeitgeist is a service which logs the users' activities and
@@ -13,6 +13,16 @@ patterns."
 HOMEPAGE="http://zeitgeist-project.com/"
 SRC_URI="http://launchpad.net/zeitgeist/${VERSION%.*}/${VERSION}/+download/${NAME}-${VERSION}.tar.xz"
 PATCH_URI="
+	fedora/0001-Fix-unit-tests.patch
+	fedora/0002-Don-t-spam-the-logs-with-warnings-that-aren-t-really.patch
+	fedora/0003-bump-version-number-and-release-name.patch
+	fedora/0004-Fix-unit-test-failure-if-XDG_DATA_DIRS-is-not-set.patch
+	fedora/0005-Replace-with-1.patch
+	fedora/0006-libzeitgeist-Add-a-missing-dependency-on-gio-2.0.patch
+	fedora/0007-Replace-get_nprocs_conf-with-g_get_num_processors.patch
+	fedora/0010-WhereClause-Fix-array-length-to-work-with-string.joi.patch
+	fedora/0011-Require-glib-2.35.4-according-to-the-usage-of-g_get_.patch
+	fedora/0012-tools-Drop-rogue-leading-unicode-character.patch
 	0.9.5-gmodule-suffix.patch
 	0.9.14-no-undefined.patch
 "
